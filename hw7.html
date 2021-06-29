@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial">
+    <title>hw7</title>
+    <script>
+        var flag=0,time=0;
+        function start()
+        {
+            if(flag==1)
+            {
+                time+=100;
+                show();
+            }
+            
+            setTimeout("start()",100);
+        }
+        function full(n)
+        {
+            n=parseInt(n)
+            if(n<10)
+            {
+                return "0"+n;
+            }
+            else
+            {
+                return n;
+            }
+        }
+        function show()
+        {
+            let s=full(time*100/1000%60);
+            let m=full(time*100/1000/60%60);
+            let h=full(time*100/1000/60/60);
+            document.getElementById("time").innerText=h+":"+m+":"+s;
+        }
+    </script>
+</head>
+<body onload="start();">
+    <div id="time">00:00:00</div>
+    <button id="start" onclick="flag=1;">开始</button>
+    <button id="pause" onclick="flag=0;">暂停</button>
+    <button id="end" onclick="flag=0;">结束</button>
+</body>
+</html>
